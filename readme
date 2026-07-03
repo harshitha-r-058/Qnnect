@@ -26,7 +26,7 @@ Qnnect is built using a modern Client-Server architecture, optimized for perform
 | **Frontend Framework** | React + Vite | Blazing-fast Single Page Application (SPA) with instant hot-module replacement (vite.config.ts). |
 | **Language** | TypeScript | Strong typing across the entire codebase for enhanced code reliability (tsconfig.json). |
 | **Styling & UI** | Tailwind CSS | Utility-first CSS framework for responsive, accessible design (tailwind.config.ts, postcss.config.js). |
-| **Backend Server** | Node.js / Express | Robust REST API and AI integration server, configured to run on **Port 5003** (server directory). |
+| **Backend Server** | Node.js / Express | Robust REST API and AI integration server, configured to run on Port 5003 (server directory). |
 | **Database ORM** | Drizzle ORM | Lightweight, high-performance TypeScript ORM for schema and query management (drizzle.config.ts). |
 | **Data Validation** | Zod / Shared Schemas | Unified type definitions and runtime validation models shared between client and server (shared directory). |
 | **AI Engine** | LLM API Integration | Connects with advanced LLMs to power conversation logic and response grading. |
@@ -46,7 +46,7 @@ Qnnect/
 │   ├── index.ts            # Server entry point and middleware setup
 │   └── routes.ts           # API endpoints and AI service integrations
 ├── shared/                 # Shared TypeScript schemas, types, and data models
-│   └── schema.ts           # Drizzle database schemas and Zod validation types
+│   └── schema.ts          # Drizzle database schemas and Zod validation types
 ├── .gitignore              # Files and directories ignored by Git
 ├── .replit                 # Replit cloud workspace configuration
 ├── DEPLOYMENT_NOTES.md     # Production deployment instructions and environment rules
@@ -71,25 +71,31 @@ Ensure you have the following installed on your system:
  * A SQL Database (PostgreSQL recommended for Drizzle ORM compatibility)
  * An active API key from your AI provider (e.g., OpenAI API key)
 ### 2. Clone the Repository
-Open your terminal and clone the project to your local machine using your specific repository link:
+Open your terminal and clone the project to your local machine:
+
 ```bash
-git clone <Your-GitHub-Repository-URL>
+git clone [https://github.com/harshitha-r-058/Qnnect.git](https://github.com/harshitha-r-058/Qnnect.git)
+
 cd Qnnect
 
 ```
 ### 3. Install Dependencies
 Install all required frontend and backend packages:
+
 ```bash
 npm install
 
 ```
 ### 4. Configure Environment Variables
 Create a new file named .env in the root directory of the project and populate it with your specific configuration details:
+
 ```env
 # Application Server Port (Default is 5003 as per server configuration)
+
 PORT=5003
 
 # Database Connection String
+
 DATABASE_URL=postgresql://username:password@localhost:5432/qnnect_db
 
 # AI Provider API Key
@@ -98,20 +104,25 @@ OPENAI_API_KEY=your_actual_openai_api_key_here
 ```
 ### 5. Initialize & Migrate the Database
 Push the shared Drizzle schema to your connected database to generate the required tables:
+
 ```bash
 npm run db:push
 
 ```
 *(Note: If you need to generate new migration files after modifying schema.ts, use npx drizzle-kit generate before pushing).*
+
 ### 6. Launch the Development Environment
 Start both the Node.js backend server (Port 5003) and the Vite frontend development server concurrently:
+
 ```bash
 npm run dev
 
 ```
 Once initialized, open your web browser and navigate to the local client URL provided in your terminal output (typically localhost port 5173). The Vite development server is configured to proxy API requests directly to your backend running on port 5003.
+
 ## 🎨 Design Philosophy & UI Guidelines
 Qnnect is built around a user-centric design philosophy detailed in the design guidelines document:
+
  * **Visual Hierarchy:** Clean typography and distinct contrast ratios ensure that interview questions and AI feedback are readable and scannable.
  * **Responsive Layouts:** Built collaboratively with Tailwind CSS grids and flexbox, ensuring seamless functionality across desktops, tablets, and mobile devices.
  * **Component Modularity:** Reusable UI components maintain visual consistency across dashboard analytics, interview chat rooms, and settings pages.
@@ -119,19 +130,24 @@ Qnnect is built around a user-centric design philosophy detailed in the design g
 When transitioning Qnnect from local development to production, adhere to the following best practices:
  * **Environment Variables:** Ensure your Database URL, AI API Key, and Port are securely configured in your cloud provider's dashboard.
  * **Build Command:** Generate the optimized static frontend build using:
+
    ```bash
    npm run build
    
    ```
  * **Production Start:** Serve the production build and initialize the API server:
+
    ```bash
    npm run start
    
    ```
  * **Replit Cloud Hosting:** The project contains pre-configured Replit files. When importing into Replit, ensure your Nix channel and PostgreSQL add-on are active, and provision your secrets in the Replit environment panel.
+
 ## 🤝 Contributing
-We welcome contributions from developers, designers, and interview mentors! To contribute to Qnnect:
- 1. **Fork the Repository:** Click the Fork button at the top right of the Qnnect repository page.
+We welcome contributions from developers, designers, and interview mentors! 
+
+To contribute to Qnnect:
+ 1. **Fork the Repository:** Click the Fork button at the top right of the Qnnect repository page on GitHub.
  2. **Create a Feature Branch:**
    ```bash
    git checkout -b feature/your-feature-name
@@ -148,7 +164,8 @@ We welcome contributions from developers, designers, and interview mentors! To c
    
    ```
  5. **Open a Pull Request:** Navigate to the Pull Requests page on GitHub and submit a PR for review.
-## 📝 License & Authorship
+
+📝 License & Authorship
  * **Repository:** harshitha-r-058 / Qnnect on GitHub
  * **Created by:** Harshitha R Gowda
  * **License:** Distributed under the MIT License. See the repository for more details.
