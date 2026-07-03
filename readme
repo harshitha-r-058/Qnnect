@@ -1,12 +1,6 @@
 # 🎙️ Qnnect — AI-Powered Mock Interview System
 
-[![GitHub repository](https://img.shields.io/badge/GitHub-harshitha--r--058%2FQnnect-blue?logo=github)](https://github.com/harshitha-r-058/Qnnect)
-[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)](https://reactjs.org/)
-[![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Drizzle ORM](https://img.shields.io/badge/Drizzle_ORM-C5F74F?logo=drizzle&logoColor=black)](https://orm.drizzle.team/)
-[![Node.js](https://img.shields.io/badge/Node.js-339933?logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+**Built With:** TypeScript | React | Vite | Tailwind CSS | Drizzle ORM | Node.js
 
 **Qnnect** is a modern, full-stack AI mock interview platform engineered to bridge the gap between interview preparation and real-world performance. By simulating authentic technical, system design, and behavioral interview rounds, Qnnect provides candidates with an immersive, browser-based environment to practice responses, receive real-time AI evaluation, and build confidence through actionable feedback.
 
@@ -14,12 +8,12 @@
 
 ## ✨ Comprehensive Feature Set
 
-* **🤖 Intelligent Question Generation:** Dynamically creates tailored interview questions based on specific job descriptions, target roles, required tech stacks, and user experience levels.
-* **💬 Interactive Mock Sessions:** Simulates realistic, multi-turn interview conversations with context-aware AI prompts and adaptive follow-up questions.
-* **📊 Real-Time Performance Analytics:** Instantly evaluates candidate answers, generating automated scores and granular feedback on communication clarity, technical accuracy, and structural delivery.
-* **🎯 Role-Specific Practice Rounds:** Supports customized interview tracks including Full-Stack Development, Frontend/Backend specialization, System Design, and Behavioral/HR rounds.
-* **🎨 Premium UI/UX:** Designed with a clean, accessible, and distraction-free interface built using React, Tailwind CSS, and custom components.
-* **🛡️ End-to-End Type Safety:** Utilizes TypeScript across both client and server layers, with shared data schemas ensuring robust validation and seamless API communication.
+*   **🤖 Intelligent Question Generation:** Dynamically creates tailored interview questions based on specific job descriptions, target roles, required tech stacks, and user experience levels.
+*   **💬 Interactive Mock Sessions:** Simulates realistic, multi-turn interview conversations with context-aware AI prompts and adaptive follow-up questions.
+*   **📊 Real-Time Performance Analytics:** Instantly evaluates candidate answers, generating automated scores and granular feedback on communication clarity, technical accuracy, and structural delivery.
+*   **🎯 Role-Specific Practice Rounds:** Supports customized interview tracks including Full-Stack Development, Frontend/Backend specialization, System Design, and Behavioral/HR rounds.
+*   **🎨 Premium UI/UX:** Designed with a clean, accessible, and distraction-free interface built using React, Tailwind CSS, and custom components.
+*   **🛡️ End-to-End Type Safety:** Utilizes TypeScript across both client and server layers, with shared data schemas ensuring robust validation and seamless API communication.
 
 ---
 
@@ -29,13 +23,13 @@ Qnnect is built using a modern Client-Server architecture, optimized for perform
 
 | Layer | Technology | Description |
 | :--- | :--- | :--- |
-| **Frontend Framework** | React + Vite | Blazing-fast Single Page Application (SPA) with instant hot-module replacement (`vite.config.ts`). |
-| **Language** | TypeScript | Strong typing across the entire codebase for enhanced code reliability (`tsconfig.json`). |
-| **Styling & UI** | Tailwind CSS | Utility-first CSS framework for responsive, accessible design (`tailwind.config.ts`, `postcss.config.js`). |
-| **Backend Server** | Node.js / Express | Robust REST API and AI integration server, configured to run on **Port 5003** (`server/`). |
-| **Database ORM** | Drizzle ORM | Lightweight, high-performance TypeScript ORM for schema and query management (`drizzle.config.ts`). |
-| **Data Validation** | Zod / Shared Schemas | Unified type definitions and runtime validation models shared between client and server (`shared/`). |
-| **AI Engine** | LLM API Integration | Connects with advanced LLMs (e.g., OpenAI) to power conversation logic and response grading. |
+| **Frontend Framework** | React + Vite | Blazing-fast Single Page Application (SPA) with instant hot-module replacement (vite.config.ts). |
+| **Language** | TypeScript | Strong typing across the entire codebase for enhanced code reliability (tsconfig.json). |
+| **Styling & UI** | Tailwind CSS | Utility-first CSS framework for responsive, accessible design (tailwind.config.ts, postcss.config.js). |
+| **Backend Server** | Node.js / Express | Robust REST API and AI integration server, configured to run on **Port 5003** (server directory). |
+| **Database ORM** | Drizzle ORM | Lightweight, high-performance TypeScript ORM for schema and query management (drizzle.config.ts). |
+| **Data Validation** | Zod / Shared Schemas | Unified type definitions and runtime validation models shared between client and server (shared directory). |
+| **AI Engine** | LLM API Integration | Connects with advanced LLMs to power conversation logic and response grading. |
 
 ---
 
@@ -77,9 +71,9 @@ Ensure you have the following installed on your system:
  * A SQL Database (PostgreSQL recommended for Drizzle ORM compatibility)
  * An active API key from your AI provider (e.g., OpenAI API key)
 ### 2. Clone the Repository
-Open your terminal and clone the project to your local machine:
+Open your terminal and clone the project to your local machine using your specific repository link:
 ```bash
-git clone [https://github.com/harshitha-r-058/Qnnect.git](https://github.com/harshitha-r-058/Qnnect.git)
+git clone <Your-GitHub-Repository-URL>
 cd Qnnect
 
 ```
@@ -108,22 +102,22 @@ Push the shared Drizzle schema to your connected database to generate the requir
 npm run db:push
 
 ```
-*(Note: If you need to generate new migration files after modifying shared/schema.ts, use npx drizzle-kit generate before pushing).*
+*(Note: If you need to generate new migration files after modifying schema.ts, use npx drizzle-kit generate before pushing).*
 ### 6. Launch the Development Environment
 Start both the Node.js backend server (Port 5003) and the Vite frontend development server concurrently:
 ```bash
 npm run dev
 
 ```
-Once initialized, open your web browser and navigate to the local client URL provided in your terminal output (typically http://localhost:5173). The Vite development server is configured to proxy API requests directly to your backend running on port 5003.
+Once initialized, open your web browser and navigate to the local client URL provided in your terminal output (typically localhost port 5173). The Vite development server is configured to proxy API requests directly to your backend running on port 5003.
 ## 🎨 Design Philosophy & UI Guidelines
-Qnnect is built around a user-centric design philosophy detailed in design_guidelines.md:
+Qnnect is built around a user-centric design philosophy detailed in the design guidelines document:
  * **Visual Hierarchy:** Clean typography and distinct contrast ratios ensure that interview questions and AI feedback are readable and scannable.
  * **Responsive Layouts:** Built collaboratively with Tailwind CSS grids and flexbox, ensuring seamless functionality across desktops, tablets, and mobile devices.
- * **Component Modularity:** Reusable UI components (defined via components.json) maintain visual consistency across dashboard analytics, interview chat rooms, and settings pages.
+ * **Component Modularity:** Reusable UI components maintain visual consistency across dashboard analytics, interview chat rooms, and settings pages.
 ## 🌐 Deployment Guidelines
-When transitioning Qnnect from local development to production (referencing DEPLOYMENT_NOTES.md and replit.md), adhere to the following best practices:
- * **Environment Variables:** Ensure DATABASE_URL, OPENAI_API_KEY, and PORT are securely configured in your cloud provider's dashboard (e.g., Replit Secrets, Vercel, or Heroku).
+When transitioning Qnnect from local development to production, adhere to the following best practices:
+ * **Environment Variables:** Ensure your Database URL, AI API Key, and Port are securely configured in your cloud provider's dashboard.
  * **Build Command:** Generate the optimized static frontend build using:
    ```bash
    npm run build
@@ -134,28 +128,28 @@ When transitioning Qnnect from local development to production (referencing DEPL
    npm run start
    
    ```
- * **Replit Cloud Hosting:** The project contains pre-configured .replit and replit.md files. When importing into Replit, ensure your Nix channel and PostgreSQL add-on are active, and provision your secrets in the Replit environment panel.
+ * **Replit Cloud Hosting:** The project contains pre-configured Replit files. When importing into Replit, ensure your Nix channel and PostgreSQL add-on are active, and provision your secrets in the Replit environment panel.
 ## 🤝 Contributing
 We welcome contributions from developers, designers, and interview mentors! To contribute to Qnnect:
- 1. **Fork the Repository:** Click the Fork button at the top right of this page.
- 2. **Create a Feature Branch:** ```bash
+ 1. **Fork the Repository:** Click the Fork button at the top right of the Qnnect repository page.
+ 2. **Create a Feature Branch:**
+   ```bash
    git checkout -b feature/your-feature-name
-   ```
    
    ```
- 3. **Commit Your Changes:** ```bash
+ 3. **Commit Your Changes:**
+   ```bash
    git commit -m "Add: detailed description of feature or fix"
-   ```
    
    ```
- 4. **Push to the Branch:** ```bash
+ 4. **Push to the Branch:**
+   ```bash
    git push origin feature/your-feature-name
-   ```
    
    ```
- 5. **Open a Pull Request:** Navigate to the original repository and submit a PR for review.
+ 5. **Open a Pull Request:** Navigate to the Pull Requests page on GitHub and submit a PR for review.
 ## 📝 License & Authorship
- * **Repository:** https://github.com/harshitha-r-058/Qnnect
+ * **Repository:** harshitha-r-058 / Qnnect on GitHub
  * **Created by:** Harshitha R Gowda
  * **License:** Distributed under the MIT License. See the repository for more details.
 *Empowering developers and job seekers to ace their next interview through artificial intelligence.
