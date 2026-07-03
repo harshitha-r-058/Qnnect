@@ -1,41 +1,21 @@
 import express, { type Request, Response, NextFunction } from "express";
+import morgan from "morgan";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 
 const app = express();
+
 // Increase body size limit for video uploads (50MB)
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: false, limit: '50mb' }));
 
-app.use((req, res, next) => {
-  const start = Date.now();
-  const path = req.path;
-  let capturedJsonResponse: Record<string, any> | undefined = undefined;
-
-  const originalResJson = res.json;
-  res.json = function (bodyJson, ...args) {
-    capturedJsonResponse = bodyJson;
-    return originalResJson.apply(res, [bodyJson, ...args]);
-  };
-
-  res.on("finish", () => {
-    const duration = Date.now() - start;
-    if (path.startsWith("/api")) {
-      let logLine = `${req.method} ${path} ${res.statusCode} in ${duration}ms`;
-      if (capturedJsonResponse) {
-        logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
-      }
-
-      if (logLine.length > 80) {
-        logLine = logLine.slice(0, 79) + "…";
-      }
-
-      log(logLine);
-    }
-  });
-
-  next();
-});
+// Use morgan for robust request logging.
+// The 'dev' format is great for development.
+// We're wrapping the output with our custom `log` function.
+app.use(morgan("dev", {
+  stream: { write: (msg) => log(msg.trim()) },
+  skip: (req) => !req.path.startsWith("/api")
+}));
 
 (async () => {
   const server = await registerRoutes(app);
@@ -44,8 +24,8 @@ app.use((req, res, next) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
 
+    log(`Error: ${status} - ${message}\n${err.stack}`);
     res.status(status).json({ message });
-    throw err;
   });
 
   // importantly only setup vite in development and after

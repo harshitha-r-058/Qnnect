@@ -1,41 +1,21 @@
 import { createClient } from "@supabase/supabase-js";
 
-// Extract Supabase URL and key from DATABASE_URL
-// DATABASE_URL format: postgresql://[user]:[password]@[host]/[database]
-// We'll construct Supabase URL from the host
 function getSupabaseConfig() {
-  const dbUrl = process.env.DATABASE_URL;
-  if (!dbUrl) {
-    throw new Error("DATABASE_URL is not set");
+  // Use dedicated environment variables for Supabase, similar to the client-side setup.
+  // This is more robust than parsing the DATABASE_URL.
+  const supabaseUrl = process.env.SUPABASE_URL;
+  const supabaseKey = process.env.SUPABASE_KEY;
+
+  if (!supabaseUrl) {
+    throw new Error("SUPABASE_URL is not set. This is required for storage operations.");
   }
 
-  // Extract host from DATABASE_URL
-  const match = dbUrl.match(/@([^:\/]+)/);
-  if (!match) {
-    throw new Error("Could not parse DATABASE_URL");
-  }
-
-  const host = match[1];
-  
-  // Supabase project URL format: https://[project-ref].supabase.co
-  // Extract project-ref from host (format: db.[project-ref].supabase.co)
-  const projectMatch = host.match(/db\.([^\.]+)\.supabase\.co/);
-  if (!projectMatch) {
-    throw new Error("Not a valid Supabase database URL");
-  }
-
-  const projectRef = projectMatch[1];
-  const supabaseUrl = `https://${projectRef}.supabase.co`;
-  
-  // For Supabase Storage, we need the anon key
-  // This should be set as an environment variable
-  const supabaseKey = process.env.SUPABASE_KEY || "";
-  
   if (!supabaseKey) {
-    console.warn("SUPABASE_KEY not set - storage features will not work");
+    // The service_role key is recommended for server-side operations.
+    // If using the anon key, ensure your bucket policies are configured for server-side uploads.
+    console.warn("SUPABASE_KEY is not set. Storage features may not work as expected without a valid service_role or anon key.");
   }
-
-  return { supabaseUrl, supabaseKey };
+  return { supabaseUrl, supabaseKey: supabaseKey || "" };
 }
 
 let supabaseClient: ReturnType<typeof createClient> | null = null;
